@@ -21,4 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => updateForecast(data));
     }
+
+    function updateCurrentWeather(data) {
+        currentWeather.innerHTML = '';
+        var weatherContent = `
+        <div class=weather-card>
+            <h2> ${data.name} (${new Date().toLocaleDateString()}) </h2>
+            <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon >
+            <p> Temp: ${data.main.temp}°F </p>
+            <p> Wind: ${data.wind.speed} MPH </p>
+            <p> Humidity: ${data.main.humidity} % </p>
+        </div>`;
+
+        currentWeather.innerHTML = weatherContent;
+    }
 });
