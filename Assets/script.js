@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function fetchCurrentWeather(city) {
         var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
-        fetch(currentWeatherUril)
+        fetch(currentWeatherUrl)
         .then(response => response.json())
         .then(data => updateCurrentWeather(data));
     }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentWeather.innerHTML = '';
 
         var weatherContent = `
-        <div class=weather-card>
+        <div class="weather-card">
             <h2> ${data.name} (${new Date().toLocaleDateString()}) </h2>
             <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon >
             <p> Temp: ${data.main.temp}°F </p>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < data.list.length; i += 8) {
             var dayData = data.list[i];
             var forecastCard = `
-            <div class="weather-card> 
+            <div class="weather-card"> 
                 <h3>${new Date(dayData.dt_txt).toLocaleDateString()}</h3>
                 <img src="http://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" alt="Weather Icon" >
                 <p>Temp: ${dayData.main.temp}°F </p>
@@ -89,4 +89,17 @@ document.addEventListener('DOMContentLoaded', () => {
             cityList.appendChild(cityButton);
         });
     }
+
+    searchButton.addEventListener('click', () => {
+        var city = cityInput.value.trim();
+        if (city) {
+            fetchCurrentWeather(city);
+            fetchForecast(city);
+            addCityToStorage(city);
+        } else {
+            console.error('Please enter a valid city name');
+        }
+    });
+
+    loadSearchHistory();
 });
