@@ -54,4 +54,39 @@ document.addEventListener('DOMContentLoaded', () => {
             forecast.innerHTML += forecastCard;
         }
     }
+
+    function addCityToStorage(city) {
+        var storage = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+        if (!storage.includes(city)) {
+            storage.push(city);
+            localStorage.setItem('searchHistory', JSON.stringify(storage));
+
+            var cityButton = document.createElement('button');
+            cityButton.textContent = city;
+            cityButton.classList.add('city-button');
+            cityButton.addEventListener('click', () => {
+                fetchCurrentWeather(city);
+                fetchForecast(city);
+            });
+
+            cityList.appendChild(cityButton);
+        }
+    }
+
+    function loadSearchHistory () {
+        var storage = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+        storage.forEach(city => {
+            var cityButton = document.createElement('button');
+            cityButton.textContent = city;
+            cityButton.classList.add('city-button');
+            cityButton.addEventListener('click', () => {
+                fetchCurrentWeather(city);
+                fetchForecast(city);
+            });
+
+            cityList.appendChild(cityButton);
+        });
+    }
 });
