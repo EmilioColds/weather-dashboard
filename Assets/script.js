@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var currentWeather = document.getElementById('current-weather');
     var forecast = document.getElementById('forecast');
     var cityList = document.getElementById('city-list');
+    var clearStorage = document.getElementById('clear-history');
 
     function fetchCurrentWeather(city) {
         var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
@@ -99,6 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Please enter a valid city name');
         }
+    });
+
+    clearStorage.addEventListener('click', function() {
+        localStorage.removeItem('searchHistory');
+        cityList.innerHTML = '';
     });
 
     loadSearchHistory();
