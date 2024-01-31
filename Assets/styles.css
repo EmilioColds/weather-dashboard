@@ -13,6 +13,11 @@
     cursor: pointer;
 }
 
+#bottom-line {
+    padding-bottom: 25px;
+    border-bottom: 2px solid #d1d5db;
+}
+
 #section-style {
     margin-left: 25px;
 }
