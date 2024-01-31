@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./Assets/styles.css" rel="stylesheet">
 </head>
 <body>
-    
+    <header class="bg-blue-800 text-white p-4">
+        <h1 class="text-3x1"> Weather Dashboard </h1>
+    </header>
+    <main class="p-4">
+        <div class="flex">
+            <aside class="w-1/4">
+                <div class="mb-4">
+                    <h2> Search for a city: </h2>
+                    <input type="text" id="city-input" class="w-full" placeholder="">
+                    <button id="search-button" class="w-full bg-blue-600 text-white p-2 mt-2"> Search </button>
+                </div>
+                <div id="city-list" class="flex flex-col">
+                    <!-- The city buttons will show up in this div -->
+                </div>
+            </aside>
+            <section class="w-3/4">
+                <div id="current-weather" class="p-4">
+                    <!-- The current weather forecast will be shown here-->
+                </div>
+                <div id="forecast" class="grid grid-cols-5 gap-4">
+                    <!-- The 5 day forecast will be shown here -->
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="./Assets/script.js"></script>
 </body>
 </html>
