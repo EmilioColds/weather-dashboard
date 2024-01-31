@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCurrentWeather(data) {
         currentWeather.innerHTML = '';
+
         var weatherContent = `
         <div class=weather-card>
             <h2> ${data.name} (${new Date().toLocaleDateString()}) </h2>
@@ -34,5 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
 
         currentWeather.innerHTML = weatherContent;
+    }
+
+    function updateForecast(data) {
+        forecast.innerHTML = '';
+
+        for (let i = 0; i < data.list.length; i += 8) {
+            var dayData = data.list[i];
+            var forecastCard = `
+            <div class="weather-card> 
+                <h3>${new Date(dayData.dt_txt).toLocaleDateString()}</h3>
+                <img src="http://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" alt="Weather Icon" >
+                <p>Temp: ${dayData.main.temp}°F </p>
+                <p>Wind: ${dayData.wind.speed} MPH </p>
+                <p>Humidity: ${dayData.main.humidity} % </p>
+            </div>`;
+
+            forecast.innerHTML += forecastCard;
+        }
     }
 });
