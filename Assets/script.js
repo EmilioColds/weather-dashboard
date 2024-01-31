@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         var weatherContent = `
         <div class="weather-card">
-            <h2> ${data.name} (${new Date().toLocaleDateString()}) </h2>
-            <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon >
-            <p> Temp: ${data.main.temp}°F </p>
-            <p> Wind: ${data.wind.speed} MPH </p>
+            <h2> ${data.name} (${new Date(data.dt * 1000).toLocaleDateString()}) </h2>
+            <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon" >
+            <p> Temp: ${data.main.temp.toFixed(1)}°F </p>
+            <p> Wind: ${data.wind.speed.toFixed(1)} MPH </p>
             <p> Humidity: ${data.main.humidity} % </p>
         </div>`;
 
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="weather-card"> 
                 <h3>${new Date(dayData.dt_txt).toLocaleDateString()}</h3>
                 <img src="http://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" alt="Weather Icon" >
-                <p>Temp: ${dayData.main.temp}°F </p>
-                <p>Wind: ${dayData.wind.speed} MPH </p>
+                <p>Temp: ${dayData.main.temp.toFixed(1)}°F </p>
+                <p>Wind: ${dayData.wind.speed.toFixed(1)} MPH </p>
                 <p>Humidity: ${dayData.main.humidity} % </p>
             </div>`;
 
