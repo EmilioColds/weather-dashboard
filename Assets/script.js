@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentWeather.innerHTML = '';
 
         var weatherContent = `
-        <div class="weather-card">
+        <div class="current-card">
             <h2> ${data.name} (${new Date(data.dt * 1000).toLocaleDateString()}) </h2>
             <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon" >
             <p> Temp: ${data.main.temp.toFixed(1)}°F </p>

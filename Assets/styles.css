@@ -1,6 +1,7 @@
 #city-input {
     border: 2px solid #d1d5db;
     border-radius: 6px;
+    padding: 10px;
 }
 
 #search-button, .city-button {
@@ -18,8 +19,14 @@
 
 #title-style {
     margin-bottom: 10px;
-    font-size: large;
+    font-size: 30px;
     font-weight: bold;
+}
+
+#headline-style {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
 }
 
 .city-button {
@@ -35,7 +42,16 @@
 }
 
 .weather-card {
-    background-color: darkgray;
+    background-color: #272f3b;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    text-align: left;
+}
+
+.current-card {
+    border: 1px solid #000000;
     border-radius: 6px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 10px;
